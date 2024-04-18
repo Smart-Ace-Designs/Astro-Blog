@@ -1,8 +1,8 @@
 ---
-import { formatDate } from "../../utils";
-import MainLayout from "../../layouts/MainLayout.astro";
+import { formatDate } from "@/utils";
+import MainLayout from "@/layouts/MainLayout.astro";
 import { getEntry } from "astro:content";
-import Tags from "../../components/Tags.astro";
+import Tags from "@/components/Tags.astro";
 
 const { slug } = Astro.params;
 if (slug === undefined) {
