@@ -2,21 +2,34 @@
 import { formatDate } from "@/utils";
 import type { CollectionEntry } from "astro:content";
 import Tags from "@/components/Tags.astro";
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
 
-const { article } = Astro.props;
+const { article, index } = Astro.props;
 
 interface Props {
   article: CollectionEntry<"blog">;
+  index: number;
 }
+
+const imagePath = `/src/images/articles/${article.data.image}`;
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/images/articles/*.{jpeg,jpg,png,gif}"
+);
+
+if (!images[imagePath])
+  throw new Error(
+    `"${imagePath}" does not exist in glob: "/src/images/articles/*.{jpeg,jpg,png,gif}"`
+  );
 ---
 
 <div class="max-w-md mx-auto mt-10">
   <div class="bg-white rounded-lg overflow-hidden shadow-lg">
     <a href={"/articles/" + article.slug}>
-      <img
-        src={"/images/" + article.data.image}
+      <Image
+        src={images[imagePath]()}
         alt={article.data.title}
-        class="w-full h-48 object-cover hover:opacity-75 transition duration-300 ease-in-out"
+        loading={index < 3 ? "eager" : "lazy"}
       />
     </a>
     <div class="p-6">
