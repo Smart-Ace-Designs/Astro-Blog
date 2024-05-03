@@ -28,7 +28,7 @@ const { Content } = await entry.render();
     <Tags tags={entry.data.tags} />
     <img
       src={"/images/" + entry.data.image}
-      alt="Article Image"
+      alt={entry.data.title}
       class="w-full h-auto rounded-xl my-6"
     />
     <Content />
