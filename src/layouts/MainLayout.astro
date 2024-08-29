@@ -4,7 +4,6 @@ import "@/styles/styles.css";
 import Navbar from "@/components/Navbar.astro";
 import Footer from "@/components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../constants";
-import { ViewTransitions } from "astro:transitions";
 
 const { title = "Articles, Stories & Tutorials for Tech People" } = Astro.props;
 
@@ -27,11 +26,15 @@ interface Props {
       crossorigin="anonymous"
       referrerpolicy="no-referrer"></script>
     <title>{SITE_TITLE} | {title}</title>
-    <ViewTransitions />
+    <style>
+      @view-transition {
+        navigation: auto;
+      }
+    </style>
   </head>
   <body class="">
     <Navbar />
-    <section class="container mx-auto max-w-screen-xl mt-10 px-8">
+    <section class="container mx-auto mt-10 max-w-screen-xl px-8">
       <slot />
     </section>
     <Footer />
