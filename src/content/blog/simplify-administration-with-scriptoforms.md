@@ -2,7 +2,7 @@
 title: "Simplify your administrative tasks with ScriptoForms"
 pubDate: 2024-09-12
 author: "Smart Ace"
-image: "image7.png"
+image: "image8.png"
 tags: ["tech", "powershell", "administration"]
 slug: simplify-your-administrative-tasks-with-ScriptoForms
 ---
