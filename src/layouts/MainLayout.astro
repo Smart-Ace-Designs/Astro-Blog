@@ -1,5 +1,5 @@
 ---
-import "@/styles/styles.css";
+import "@/styles/global.css";
 import { ClientRouter } from "astro:transitions";
 
 import Navbar from "@/components/Navbar.astro";
@@ -22,16 +22,14 @@ interface Props {
     <meta name="description" content={SITE_DESCRIPTION} />
     <script
       is:inline
-      src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.js"
-      integrity="sha512-BJ/5sR2hFxQTKin/55JQCcMTObShDBAmVjL/3NR/MVcrhyOazJjAgvROem03+HYyGw16SVdSfoWCFGr9syxAKA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"></script>
+      src="https://cdn.jsdelivr.net/npm/flowbite@3.0.0/dist/flowbite.min.js"
+    ></script>
     <title>{SITE_TITLE} | {title}</title>
     <ClientRouter />
   </head>
   <body class="">
     <Navbar />
-    <section class="container mx-auto mt-10 max-w-screen-xl px-8">
+    <section class="container mx-auto mt-10 max-w-(--breakpoint-xl) px-8">
       <slot />
     </section>
     <Footer />
