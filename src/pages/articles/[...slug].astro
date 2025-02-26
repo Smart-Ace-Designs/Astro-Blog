@@ -20,21 +20,21 @@ const { Content } = await entry.render();
 
 const imagePath = `/src/images/articles/${entry.data.image}`;
 const images = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/images/articles/*.{jpeg,jpg,png,gif}"
+  "/src/images/articles/*.{jpeg,jpg,png,gif}",
 );
 
 if (!images[imagePath])
   throw new Error(
-    `"${imagePath}" does not exist in glob: "/src/images/articles/*.{jpeg,jpg,png,gif}"`
+    `"${imagePath}" does not exist in glob: "/src/images/articles/*.{jpeg,jpg,png,gif}"`,
   );
 ---
 
 <MainLayout>
   <article>
-    <h1 class="text-4xl font-bold mb-2">
+    <h1 class="mb-2 text-4xl font-bold">
       {entry.data.title}
     </h1>
-    <h3 class="text-lg mb-2">
+    <h3 class="mb-2 text-lg">
       Written by {entry.data.author} on {formatDate(entry.data.pubDate)}
     </h3>
     <Tags tags={entry.data.tags} />
@@ -42,7 +42,7 @@ if (!images[imagePath])
       src={images[imagePath]()}
       alt={entry.data.title}
       loading={"eager"}
-      class="w-full h-auto rounded-xl my-6"
+      class="my-6 h-auto w-full rounded-xl"
     />
     <Content />
   </article>

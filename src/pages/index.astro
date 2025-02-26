@@ -8,11 +8,9 @@ import { HOMEPAGE_ARTICLE_LIMIT } from "@/constants";
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 
-const allBlogArticles: CollectionEntry<"blog">[] = (
-  await getCollection("blog")
-).sort(
+const allBlogArticles: CollectionEntry<"blog">[] = (await getCollection("blog")).sort(
   (a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) =>
-    b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+    b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 
 const mostRecentArticle: CollectionEntry<"blog"> = allBlogArticles[0];
@@ -22,7 +20,7 @@ const otherArticles: CollectionEntry<"blog">[] = allBlogArticles.slice(1);
 <MainLayout>
   <div class="grid grid-cols-1 gap-5 lg:grid-cols-2">
     <div>
-      <h1 class="text-5xl font-bold mt-4 mb-8 leading-tight xl:text-6xl">
+      <h1 class="mt-4 mb-8 text-5xl leading-tight font-bold xl:text-6xl">
         Articles, Stories & Tutorials for Tech People
       </h1>
       <SearchForm />
@@ -34,9 +32,7 @@ const otherArticles: CollectionEntry<"blog">[] = allBlogArticles.slice(1);
     {
       otherArticles
         .slice(0, HOMEPAGE_ARTICLE_LIMIT)
-        .map((article, index) => (
-          <ArticleCard article={article} index={index} />
-        ))
+        .map((article, index) => <ArticleCard article={article} index={index} />)
     }
   </div>
 </MainLayout>

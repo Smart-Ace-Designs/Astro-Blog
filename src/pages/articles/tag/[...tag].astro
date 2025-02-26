@@ -10,27 +10,19 @@ if (tag === undefined) {
   throw new Error("Tag is required");
 }
 
-const allBlogArticles: CollectionEntry<"blog">[] = (
-  await getCollection("blog")
-).sort(
+const allBlogArticles: CollectionEntry<"blog">[] = (await getCollection("blog")).sort(
   (a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) =>
-    b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+    b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 
-const tagArticles = allBlogArticles.filter((article) =>
-  article.data.tags.includes(tag)
-);
+const tagArticles = allBlogArticles.filter((article) => article.data.tags.includes(tag));
 ---
 
 <MainLayout>
-  <h1 class="text-2xl pb-3">
+  <h1 class="pb-3 text-2xl">
     Tag: <span class="font-semibold text-indigo-400">{capitalize(tag)}</span>
   </h1>
   <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-    {
-      tagArticles.map((article, index) => (
-        <ArticleCard article={article} index={index} />
-      ))
-    }
+    {tagArticles.map((article, index) => <ArticleCard article={article} index={index} />)}
   </div>
 </MainLayout>
