@@ -10,9 +10,9 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  legacy: {
-    collections: true,
-  },
+  // legacy: {
+  //   collections: true,
+  // },
   output: "server",
   adapter: netlify(),
 });

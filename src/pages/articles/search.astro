@@ -14,7 +14,7 @@ const searchResults = allBlogArticles.filter((article) => {
 
   const bodyMatch: boolean = article.body.toLowerCase().includes(query!.toLowerCase());
 
-  const slugMatch: boolean = article.slug.toLowerCase().includes(query!.toLowerCase());
+  const slugMatch: boolean = article.id.toLowerCase().includes(query!.toLowerCase());
 
   const authorMatch: boolean = article.data.author.toLowerCase().includes(query!.toLowerCase());
 
