@@ -13,7 +13,6 @@ export default defineConfig({
   legacy: {
     collections: true,
   },
-  integrations: [],
   output: "server",
   adapter: netlify(),
 });
